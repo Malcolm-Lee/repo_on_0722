@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My First Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  <p>This is a simple paragraph.</p>
+  <button onclick="sayHello()">Click me</button>
+  
+  <p><a href="about.html">About Me</a></p> <!-- Link to the new page -->
+
+  <img src="63N9uy8nd9j7Eog2axPQ8lbr3Wj.jpg" alt="website's 1st pic" width="250">
+  
+  <video width="320" height="240" controls>
+  <source src="England.Is.Mine.2017.1080p.BluRay.x264-[YTS.AG].mp4"  type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
+  <h2>This YT vid?</h2>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/wnacdOIoTBQ?si=sT68cQnLuRd2jQaa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+  </iframe>
+
+  
+  <h2>My Music Collection</h2>
+
+  <!-- Dropdown to choose track -->
+  <select id="trackSelector"> Please choose!
+  <option value="Vangelis - Blade Runner ( Soundtrack ) ( 1994) [ MP3 320kbps ] - Freak37 - 副本/05 Love Theme.mp3"> Track1 </option>
+  <option value="Vangelis - Blade Runner ( Soundtrack ) ( 1994) [ MP3 320kbps ] - Freak37 - 副本/08 Memories Of Green.mp3"> Track2 </option>
+   </select>
+
+   <!-- Display file name -->
+  <p id="currentSongName">Currently playing: ???</p>
+
+  <!-- Audio player -->
+  <audio id="musicPlayer" controls>
+  <source id="audioSource" src="" " type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+
+  <!-- Download link -->
+  <p>
+  <a id="downloadLink" href="" download>⬇️ Download This Track</a>
+  </p>
+
+  <script>
+  const selector = document.getElementById('trackSelector');
+  const audio = document.getElementById('musicPlayer');
+  const source = document.getElementById('audioSource');
+  const songNameDisplay = document.getElementById('currentSongName');
+  const downloadLink = document.getElementById('downloadLink');
+
+   function updateSong(fileName) {
+    source.src = fileName;
+    audio.load();
+    audio.play();
+
+    songNameDisplay.textContent = 'Currently playing: ' + fileName;
+    downloadLink.href = fileName;
+    downloadLink.download = fileName;
+    }
+
+    // Initial load
+    const initialFile = selector.value;
+   updateSong(initialFile);
+
+    // When dropdown changes
+    selector.addEventListener('change', function () {
+    updateSong(this.value);
+    });
+    </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
